@@ -1,0 +1,89 @@
+{
+  "name": "OpenMaskit Design System",
+  "version": "0.1.0",
+  "theme": "dark",
+  "web": {
+    "aliases": {
+      "bg-root": "color.bgRoot",
+      "bg-surface": "color.bgSurface",
+      "bg-elevated": "color.bgElevated",
+      "bg-hover": "color.bgHover",
+      "bg-input": "color.bgInput",
+      "border-subtle": "color.borderSubtle",
+      "border-default": "color.borderDefault",
+      "border-focus": "color.borderFocus",
+      "text-primary": "color.textPrimary",
+      "text-secondary": "color.textSecondary",
+      "text-muted": "color.textMuted",
+      "accent": "color.accent",
+      "accent-dim": "color.accentDim",
+      "accent-hover": "color.accentHover",
+      "accent-glow": "color.accentGlow",
+      "green": "color.green",
+      "green-dim": "color.greenDim",
+      "green-border": "color.greenBorder",
+      "red": "color.red",
+      "red-dim": "color.redDim",
+      "red-border": "color.redBorder",
+      "teal": "color.teal",
+      "teal-dim": "color.tealDim",
+      "teal-border": "color.tealBorder",
+      "purple": "color.purple",
+      "purple-dim": "color.purpleDim",
+      "purple-border": "color.purpleBorder",
+      "blue": "color.blue",
+      "blue-dim": "color.blueDim",
+      "blue-border": "color.blueBorder",
+      "orange": "color.orange",
+      "orange-dim": "color.orangeDim",
+      "orange-border": "color.orangeBorder",
+      "radius-sm": "radius.sm",
+      "radius-md": "radius.md",
+      "radius-lg": "radius.lg",
+      "radius-xl": "radius.xl"
+    },
+    "extras": {
+      "shadow-sm": "0 1px 2px rgba(0,0,0,0.3)",
+      "shadow-md": "0 4px 12px rgba(0,0,0,0.4)",
+      "shadow-lg": "0 8px 32px rgba(0,0,0,0.5)",
+      "shadow-glow": "0 0 20px var(--accent-glow)",
+      "font-body": "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+      "font-mono": "'JetBrains Mono', 'SF Mono', 'Fira Code', monospace",
+      "transition-fast": "var(--om-duration-fast) ease",
+      "transition-base": "var(--om-duration-base) ease",
+      "transition-slow": "var(--om-duration-slow) ease"
+    }
+  },
+  "swiftColors": {
+    "root": "color.bgRoot",
+    "surface": "color.bgSurface",
+    "elevated": "color.bgElevated",
+    "border": "color.borderDefault",
+    "text": "color.textPrimary",
+    "secondary": "color.textSecondary",
+    "muted": "color.textMuted",
+    "accent": "color.accent",
+    "teal": "color.teal",
+    "green": "color.green",
+    "red": "color.red",
+    "orange": "color.orange"
+  },
+  "contrast": {
+    "foreground": [
+      "color.textPrimary",
+      "color.textSecondary",
+      "color.textMuted",
+      "color.accent",
+      "color.teal",
+      "color.green",
+      "color.red",
+      "color.orange"
+    ],
+    "background": [
+      "color.bgRoot",
+      "color.bgSurface",
+      "color.bgElevated"
+    ],
+    "minimum": 4.5
+  }
+}

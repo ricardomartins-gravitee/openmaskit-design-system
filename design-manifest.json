@@ -1,0 +1,13 @@
+{
+  "files": {
+    "LICENSE": "cce92d1efb0ba1768b756e9475392977bd37400b90bf754ab7a2060e6034fbce",
+    "NOTICE": "633f41a4a7b33af69d109ed93dca6fcc37d6c9370897696def84610b4df63ed2",
+    "Sources/OpenMaskitDesign/Tokens.swift": "4fce36fefad209d70786f860f1110fa54fbd352489d87862f77b049fac0fc8cd",
+    "TRADEMARKS.md": "c3916fc5507035bef3f67517b523f6396ba85979c69bf42aadd7b4c690766a27",
+    "web/components.css": "35654163f8e507e1ec1a8ce37644b7704fb111e3eff0a8478c7d31c9b76e4e16",
+    "web/tokens.css": "0518794086d4e0f2886e545eacbd35b10b687669f85e407794134d573f93a83f",
+    "web/tokens.resolved.json": "4ab5448cc3a7db8e093aa668c4419937bd126862f15c3b6792a102e00161d082"
+  },
+  "theme": "dark",
+  "version": "0.1.0"
+}

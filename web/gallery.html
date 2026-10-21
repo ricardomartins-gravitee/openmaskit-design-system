@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenMaskit Design System</title>
+<link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="components.css">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; padding: var(--om-space-lg); font: 14px/1.6 var(--font-body); background: var(--bg-root); color: var(--text-primary); }
+main { max-width: 700px; margin: auto; display: grid; gap: var(--om-space-lg); }
+h1,h2 { font-family: var(--font-mono); margin: 0; } h1 { font-size: 20px; } h2 { font-size: 14px; }
+p { margin: 0; } .row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--om-space-sm); }
+.secondary { color: var(--text-secondary); } .muted { color: var(--text-muted); }
+.error { color: var(--red); } label { display: grid; gap: var(--om-space-xs); }
+</style></head><body><main>
+<h1>OpenMaskit Design System</h1><p class="secondary">Shared dark theme · web and native macOS</p>
+<section class="om-panel"><h2>Services</h2><p>Set up your local services</p><p class="muted">A dedicated OpenMaskit, Presidio and relay installation.</p>
+<div class="row"><button class="om-button om-button-primary">Set Up OpenMaskit</button><button class="om-button">Refresh</button><button class="om-button om-button-danger">Stop Services</button><button class="om-button" disabled>Unavailable</button></div></section>
+<section class="om-panel"><h2>Local MCPs</h2><div class="row"><span class="om-badge">Connected</span><span class="secondary">Synthetic MCP</span></div><label for="name">Name<input class="om-input" id="name" value="Synthetic MCP"></label><label for="analyser">Analyser<select class="om-input" id="analyser"><option>Presidio</option></select></label><p class="error" role="status">Example error: the local service is unavailable.</p><p class="muted">No local MCP profiles added yet.</p></section>
+</main></body></html>
