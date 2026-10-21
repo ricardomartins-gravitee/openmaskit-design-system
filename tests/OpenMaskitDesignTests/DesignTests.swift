@@ -52,6 +52,7 @@ final class DesignTests: XCTestCase {
       .background(OpenMaskitTheme.root)
       .preferredColorScheme(.dark)
       let host = NSHostingView(rootView: view)
+      host.appearance = NSAppearance(named: .darkAqua)
       let size = host.fittingSize
       XCTAssertEqual(size.width, 600, accuracy: 1)
       XCTAssertGreaterThan(size.height, 90)
@@ -62,6 +63,12 @@ final class DesignTests: XCTestCase {
       host.cacheDisplay(in: host.bounds, to: bitmap)
       XCTAssertGreaterThan(bitmap.pixelsWide, 0)
       XCTAssertGreaterThan(bitmap.pixelsHigh, 0)
+      if let output = ProcessInfo.processInfo.environment["DESIGN_SNAPSHOT_DIR"] {
+        let directory = URL(fileURLWithPath: output)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        let png = try XCTUnwrap(bitmap.representation(using: .png, properties: [:]))
+        try png.write(to: directory.appendingPathComponent("native-components.png"))
+      }
       XCTAssertTrue(
         host.subviews.allSatisfy { !String(describing: type(of: $0)).contains("WebView") })
     }

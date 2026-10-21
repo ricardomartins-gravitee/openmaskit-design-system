@@ -263,7 +263,14 @@ def outputs(root=ROOT):
         hashed[name] = hashlib.sha256((root / name).read_bytes()).hexdigest()
     result["design-manifest.json"] = (
         json.dumps(
-            {"version": config["version"], "theme": config["theme"], "files": hashed},
+            {
+                "version": config["version"],
+                "theme": config["theme"],
+                "files": [
+                    {"path": name, "sha256": digest}
+                    for name, digest in sorted(hashed.items())
+                ],
+            },
             indent=2,
             sort_keys=True,
         )

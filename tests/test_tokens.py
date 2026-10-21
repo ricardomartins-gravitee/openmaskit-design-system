@@ -49,7 +49,8 @@ class TokenTests(unittest.TestCase):
 
     def test_manifest_integrity_including_handwritten_components_and_license(self):
         manifest = build.read_json(ROOT / "design-manifest.json")
-        for name, digest in manifest["files"].items():
+        for asset in manifest["files"]:
+            name, digest = asset["path"], asset["sha256"]
             self.assertEqual(
                 hashlib.sha256((ROOT / name).read_bytes()).hexdigest(), digest
             )

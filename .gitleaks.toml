@@ -1,0 +1,15 @@
+[extend]
+useDefault = true
+
+# Only exact, public generated checksums in this manifest are allowed. These
+# lines contain the word tokens, which triggers the generic key heuristic.
+[[allowlists]]
+description = "Published design asset SHA-256 values, verified by generation tests"
+condition = "AND"
+paths = ['''^design-manifest\.json$''']
+regexTarget = "line"
+regexes = [
+  '''^\s*"Sources/OpenMaskitDesign/Tokens\.swift": "4fce36fefad209d70786f860f1110fa54fbd352489d87862f77b049fac0fc8cd",?\s*$''',
+  '''^\s*"web/tokens\.css": "0518794086d4e0f2886e545eacbd35b10b687669f85e407794134d573f93a83f",?\s*$''',
+  '''^\s*"web/tokens\.resolved\.json": "4ab5448cc3a7db8e093aa668c4419937bd126862f15c3b6792a102e00161d082",?\s*$''',
+]

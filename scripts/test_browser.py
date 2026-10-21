@@ -2,6 +2,7 @@
 
 import functools
 import http.server
+import sys
 import threading
 from pathlib import Path
 
@@ -69,7 +70,14 @@ def main():
                     )
                     # Real keyboard traversal establishes focus-visible rather than forcing a CSS state.
                     page.locator("body").click(position={"x": 2, "y": 2})
-                    page.keyboard.press("Tab")
+                    # Safari on macOS uses Option-Tab for all controls when the
+                    # user's Keyboard Navigation setting is off.
+                    key = (
+                        "Alt+Tab"
+                        if sys.platform == "darwin" and engine.name == "webkit"
+                        else "Tab"
+                    )
+                    page.keyboard.press(key)
                     assert primary.evaluate("el => el === document.activeElement")
                     assert (
                         primary.evaluate("el => getComputedStyle(el).outlineStyle")

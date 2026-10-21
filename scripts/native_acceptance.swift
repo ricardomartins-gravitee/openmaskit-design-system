@@ -25,6 +25,7 @@ struct Acceptance {
     .foregroundStyle(OpenMaskitTheme.text).background(OpenMaskitTheme.root)
     .preferredColorScheme(.dark)
     let view = NSHostingView(rootView: fixture)
+    view.appearance = NSAppearance(named: .darkAqua)
     let size = view.fittingSize
     precondition(abs(size.width - 600) <= 1 && size.height > 90 && size.height < 300)
     view.frame = NSRect(origin: .zero, size: size)
