@@ -26,7 +26,7 @@ def main():
         with sync_playwright() as playwright:
             for engine in [playwright.chromium, playwright.webkit]:
                 browser = engine.launch()
-                for width in [375, 1024]:
+                for width in [320, 375, 768, 1024, 1440]:
                     page = browser.new_page(
                         viewport={"width": width, "height": 900},
                         reduced_motion="reduce",
@@ -83,6 +83,16 @@ def main():
                         primary.evaluate("el => getComputedStyle(el).outlineStyle")
                         == "solid"
                     )
+                    # Native tab traversal must skip disabled controls in both engines.
+                    for name in ["Refresh", "Stop Services"]:
+                        page.keyboard.press(key)
+                        assert page.get_by_role(
+                            "button", name=name, exact=True
+                        ).evaluate("el => el === document.activeElement")
+                    page.keyboard.press(key)
+                    assert page.get_by_label("Name").evaluate(
+                        "el => el === document.activeElement"
+                    )
                     assert (
                         primary.evaluate(
                             "el => getComputedStyle(el).transitionDuration"
@@ -111,6 +121,31 @@ def main():
                         path=str(output / f"{engine.name}-{width}.png"), full_page=True
                     )
                     page.close()
+                retina = browser.new_page(
+                    viewport={"width": 375, "height": 900},
+                    device_scale_factor=2,
+                    reduced_motion="no-preference",
+                )
+                retina.goto(f"http://127.0.0.1:{server.server_port}/gallery.html")
+                control = retina.get_by_role("button", name="Set Up OpenMaskit")
+                assert (
+                    control.evaluate("el => getComputedStyle(el).transitionDuration")
+                    != "0s"
+                )
+                retina.emulate_media(reduced_motion="reduce")
+                assert (
+                    control.evaluate("el => getComputedStyle(el).transitionDuration")
+                    == "0s"
+                )
+                retina.get_by_label("Name").fill("Synthetic 👩🏽‍💻 MCP " * 30)
+                assert retina.evaluate(
+                    "document.documentElement.scrollWidth <= innerWidth"
+                )
+                assert retina.get_by_role("status").is_visible()
+                retina.screenshot(
+                    path=str(output / f"{engine.name}-retina.png"), full_page=True
+                )
+                retina.close()
                 browser.close()
     finally:
         server.shutdown()
